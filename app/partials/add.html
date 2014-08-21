@@ -1,0 +1,21 @@
+<p>Add data</p>
+
+<div class="histogram" ng-if="datum">
+  <svg d3-histogram histogram-data="datum" bins="bins" width="500" height="300"></svg><br>
+  Bins: <input type="text" ng-model="bins">
+  <input type="button" value="+" ng-click="bins = bins + 1">
+  <input type="button" value="-" ng-click="bins = bins - 1">
+</div>
+
+<form ng-submit="addDatum()">
+  Url: <br><input type="url" ng-model="datum.url" size="50" ng-trim required placeholder="enter url here">
+  <br><br>
+  Response times: <br><textarea rows="4" cols="50" ng-model="datum.responseTimes" ng-trim required placeholder="enter space separated values here"></textarea>
+  <br><br>
+  <input type="submit" value="Add">
+</form>
+
+<p>
+  Showing of 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>

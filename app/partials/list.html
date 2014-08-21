@@ -1,0 +1,40 @@
+<p>List data</p>
+
+<div ng-controller="ListController">
+  
+  <table>
+    <tr>
+      <th>Url</th>
+      <th>Response time</th>
+      <th>Actions</th>
+    </tr>      
+    <tr ng-repeat="datum in data" ng-class="{alt: $odd}">
+      <td>{{datum.url}}</td>
+      <td>{{datum.responseTimes | dottedLimitTo : 100}}</td>
+      <td>
+        <span ng-if="!editing">
+          <input type="button" ng-click="populateUpdateForm(datum)" value="Edit">
+          <input type="button" ng-click="deleteDatum(datum)" value="Delete">
+          <input type="button" ng-click="showHistogram(datum)" value="Show histogram">
+        </span>
+      </td>
+      <!-- <td ng-repeat="responseTime in datum.responseTimes">{{responseTime}}</td> -->
+    </tr>
+  </table>
+
+  <div class="histogram" ng-if="datum">
+    <svg d3-histogram histogram-data="datum" bins="bins" width="500" height="300"></svg><br>
+    Bins: <input type="text" ng-model="bins">
+    <input type="button" value="+" ng-click="bins = bins + 1">
+    <input type="button" value="-" ng-click="bins = bins - 1">
+  </div>
+
+  <form ng-if="editing" ng-submit="updateDone()">
+    Url: <br><input type="url" ng-model="datum.url" size="50" ng-trim required placeholder="enter url here">
+    <br><br>
+    Response times: <br><textarea rows="4" cols="50" ng-model="datum.responseTimes" ng-trim required placeholder="enter space separated values here"></textarea>
+    <br><br>
+    <input type="submit" value="Done editing">
+  </form>
+
+</div>
