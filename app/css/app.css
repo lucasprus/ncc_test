@@ -28,3 +28,43 @@
   content: "";
   padding: 0;
 }
+
+svg {
+  font: 10px sans-serif;
+}
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+table td, table th {
+    border: 2px solid green;
+}
+
+table th {
+    background-color: yellow;
+}
+
+table tr.alt td {
+    background-color: lightgray;
+}
+
+body {
+  margin: 10px;
+}
+
+div.histogram, form {
+  border: 2px solid green;
+  margin: 5px; 
+}
