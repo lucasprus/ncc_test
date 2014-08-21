@@ -57,6 +57,10 @@ describe('directives', function () {
         expect(element.children().length).toEqual(22);
       });
 
+      it('should draw bars approximately 22px wide', function () {
+        expect(parseFloat(element.find('rect').eq(0).attr('width'))).toBeCloseTo(22.0);
+      });
+
     });
 
     describe('for 10 bins', function () {
@@ -74,6 +78,10 @@ describe('directives', function () {
       it('should draw 10 bars and two axis', function () {
         expect(element.children().length).toEqual(12);
       });
+
+      it('should draw bars approximately 44px wide', function () {
+        expect(parseFloat(element.find('rect').eq(0).attr('width'))).toBeCloseTo(44.0);
+      });      
 
     });
 
